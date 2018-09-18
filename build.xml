@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Project1" default="dist" basedir=".">
+<property name="source.dir" location="src"/>
+<property name="build.dir" location="bin"/>
+<property name="doc.dir" location="doc"/>
+<property name="test.dir" location="junitTesting"/>
+<property name="dist.dir" location="dist"/>
+<property name="lib.dir" location="/Users/zachharju/Documents"/>
+<path id="classPath">
+	<pathelement location="${lib.dir}/junit-4.10.jar" />
+	<pathelement location="${lib.dir}/hamcrest-all-1.3.jar" />
+</path>
+<target name="init" description="setup project directories">
+	<mkdir dir="${build.dir}"/>
+	<mkdir dir="${doc.dir}"/>
+	<mkdir dir="${dist.dir}"/>
+</target>
+<target name="clean" description="tidy up the workspace">
+	<delete dir="${build.dir}"/>
+	<delete dir="${doc.dir}"/>
+	<delete dir="${dist.dir}"/>
+</target>
+<target name="compile" depends="init" description="compile java sources">
+	<javac srcdir="${source.dir}" destdir="${build.dir}" includeantruntime="false"/>
+</target>
+<target name="doc" depends="init" description="generate documentation">
+	<javadoc sourcepath="${source.dir}" destdir="${doc.dir}">
+		<classpath path="${lib.dir}">
+			<path refid="classPath" />
+		</classpath>
+		<fileset dir="."/>
+	</javadoc>
+</target>
+<target name="junit" depends="compile" description="run junit tests">
+	<mkdir dir="${test.dir}" />
+	<junit printSummary="yes">
+		<classpath path="${lib.dir}">
+			<path refid="classPath" />
+		</classpath>
+		<formatter type="xml" />
+		<test name="testsrc.TestNode" todir="${test.dir}" haltonfailure="no" haltonerror="no" />
+		<test name="testsrc.TestFlight" todir="${test.dir}" haltonfailure="no" haltonerror="no" />
+	</junit>
+</target>
+</project>
