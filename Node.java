@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node{
+public class Node implements Comparable<Node>{
 	private String destination;
 	private List<Flight> neighbors;
 	private boolean visited;
@@ -104,7 +104,15 @@ public class Node{
 	public void setDistance(double dist) {
 		this.distance = dist;
 	}
-
+	
+	/**
+	 * compares the two Nodes distances
+	 * Takes in a Node
+	 */
+	@Override
+	public int compareTo(Node node) {
+		return Double.compare(this.distance, node.getDistance());
+	}
 	
 
 }
