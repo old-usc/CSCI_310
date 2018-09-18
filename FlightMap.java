@@ -6,14 +6,15 @@ import java.util.PriorityQueue;
 public class FlightMap {
 	/**
 	 * Takes in the starting place Node for this journey.
-	 * Sets the distance to 0 because we have not travelled at all.
+	 * Sets the distance to 0 because we have not traveled at all.
 	 * Creates a priority queue to hold all of the destinations we have
-	 * travelled to make it to our target destination. Mark off the starting
+	 * traveled to make it to our target destination. Mark off the starting
 	 * place node as visited so we do not reuse it. Then, as long as the
 	 * priority queue is not empty, we take out the front node. We use that
 	 * node to see what other possible destinations there are from that node.
 	 * We check to make sure we have not already gone to the places we can travel.
-	 * 
+	 * Then we calculate the new distance and use that to set the distance and 
+	 * preceding node.
 	 */
 	public void findPath(Node startCity) {
 		
