@@ -75,12 +75,8 @@ public class SearchMap {
 			List<Node> nodeHolder;
 			File fout = new File("/Users/zachharju/Documents/workspace/Project1/src/out.txt");
 			FileOutputStream fos = new FileOutputStream(fout);
-			//BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
 			PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(fos)));
-			//bw.write("Destination	Flight Route from P		Total Cost");
-			//bw.newLine();
 			pw.printf("%-30.30s  %-30.30s %-30.30s%n", "Destination", "Flight Route from P", "Total Cost");
-			//pw.println();
 			String nodesOut = "";
 			for (int i = 0; i < destinations.size(); i++) {
 				nodeHolder = fm.getFlightPath(destinations.get(i));
@@ -92,10 +88,8 @@ public class SearchMap {
 				pw.printf("%-30s  %-30s %-30s%n", nodeHolder.get(nodeHolder.size()-1).getDestination(), nodesOut, nodeHolder.get(nodeHolder.size()-1).getDistance());
 				nodesOut = "";
 			}
-			//bw.close();
 			pw.flush();
 			pw.close();
-			//System.out.println(fm.getFlightPath(nodes.get(1)));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
