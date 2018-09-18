@@ -23,6 +23,9 @@
 <target name="compile" depends="init" description="compile java sources">
 	<javac srcdir="${source.dir}" destdir="${build.dir}" includeantruntime="false"/>
 </target>
+<target name="dist" depends="init" description="create jar files from class files">
+	<jar basedir="${build.dir}" destfile="${dist.dir}/dist.jar"/>
+</target>
 <target name="doc" depends="init" description="generate documentation">
 	<javadoc sourcepath="${source.dir}" destdir="${doc.dir}">
 		<classpath path="${lib.dir}">
